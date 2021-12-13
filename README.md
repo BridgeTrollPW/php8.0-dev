@@ -7,6 +7,26 @@ Choose any Ubuntu image and the suggested php version for it will be installed.
 * Ubuntu 20.04 -> php 7.4
 * Ubuntu 21.04 -> php 7.4
 * Ubuntu 21.10 -> php 8.0
+
+## Use this as image
+Add your sources, expose a port and start bash
+```
+#
+# Move all source files from this host file system to the container file system
+#
+COPY . /srv/development
+WORKDIR /srv/development
+
+#
+# The port 8080 will be exposed to the host maschine
+#
+EXPOSE 8080
+
+#
+# Start container with normal bash shell
+#
+CMD ["/bin/bash"]
+```
 ### Build the container  
 Run within the terminal, preferably WSL2:  
 `docker build -t php8.0-dev:latest .`

@@ -22,19 +22,3 @@ RUN php -r "if (hash_file('sha384', 'composer-setup.php') === '906a84df04cea2aa7
 RUN php composer-setup.php
 RUN php -r "unlink('composer-setup.php');"
 RUN mv composer.phar /usr/local/bin/composer
-
-#
-# Move all source files from this host file system to the container file system
-#
-COPY . /srv/development
-WORKDIR /srv/development
-
-#
-# The port 8080 will be exposed to the host maschine
-#
-EXPOSE 8080
-
-#
-# Start container with normal bash shell
-#
-CMD ["/bin/bash"]
